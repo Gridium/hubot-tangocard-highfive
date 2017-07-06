@@ -1,4 +1,5 @@
 TangoApp = require './api/tangocard'
+http = require('http');
 
 module.exports = (robot) ->
     app = new TangoApp(robot)
@@ -38,10 +39,12 @@ module.exports = (robot) ->
 
             return doOrder() if resp.account?.available_balance >= dollars*100
 
-            # Account needs more money
-            robot.http('http://jsonip.com').get() (err, res, body) ->
-                jsonip = JSON.parse body
-                app.fundAccount cust, acct, amtToFund, jsonip.ip, cc, auth, (resp) ->
+            http.get {'host': 'api.ipify.org', 'port': 80, 'path': '/'}, (resp) ->
+              resp.on 'data', (ip_addr) ->
+                ip_addr = "#{ip_addr}" #convert to a string instead of byte buffer
+                robot.logger.info "My public IP address is: " + ip_addr
+
+                app.fundAccount cust, acct, amtToFund, ip_addr, cc, auth, (resp) ->
                     return doOrder() if resp.success
                     robot.logger.info "TANGO funding response #{JSON.stringify resp}"
                     msg.reply "(Problem funding Tango Card account: '#{resp.denial_message}'. Check the logs; you might want `highfive config`.)"

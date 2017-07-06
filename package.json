@@ -1,26 +1,26 @@
 {
-  "name": "hubot-tangocard-highfive",
-  "version": "0.2.7",
-  "description": "Hubot plugin for high-fiving and optionally sending gift cards to chat users",
+  "name": "hubot-tangocard-highfive-v2",
+  "version": "0.3.1",
+  "description": "Hubot plugin for high-fiving and optionally sending gift cards to chat users. This fixes issues in the unmaintained hubot-tangocard-highfive repo.",
   "main": "index.coffee",
   "scripts": {
     "test": "mocha --compilers coffee:coffee-script/register test/*"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ben/hubot-tangocard-highfive"
+    "url": "https://github.com/Gridium/hubot-tangocard-highfive-v2"
   },
   "keywords": [
     "hubot",
     "hubotscripts",
     "tangocard"
   ],
-  "author": "Ben Straub <ben@straub.cc>",
+  "author": "Nick Pleis <nick@gridium.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ben/hubot-tangocard-highfive/issues"
+    "url": "https://github.com/Gridium/hubot-tangocard-highfive-v2/issues"
   },
-  "homepage": "https://github.com/ben/hubot-tangocard-highfive",
+  "homepage": "https://github.com/Gridium/hubot-tangocard-highfive-v2",
   "devDependencies": {
     "chai": "^1.10.0",
     "gulp": "^3.8.10",
